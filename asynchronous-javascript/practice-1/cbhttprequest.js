@@ -5,7 +5,8 @@ const getComments = (callback) => {
 
   request.addEventListener("readystatechange", () => {
     if (request.readyState === 4 && request.status === 200) {
-      callback(undefined, request.responseText);
+      const data = JSON.parse(request.responseText);
+      callback(undefined, data);
     } else if (request.readyState === 4) {
       callback("Could not fetch data", undefined);
     }
